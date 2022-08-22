@@ -30,8 +30,9 @@
 <body>
     <div class="mainWrapper">
         <%- include('header'); -%>
+        <%- include('interviewAddModel'); -%>
             <%- include('interview_details'); -%>
-                <%- include('interviewAddmodel'); -%>
+                
                     <ol class="list-group list-group">
                         <% for(let interview of locals.interviewList){%>
                             <span id="border"></span>
