@@ -1,0 +1,9 @@
+.allocate{
+    border: 2px solid blue !important;
+}
+.interviews_list{
+    cursor: pointer;
+}
+#border{
+    border-top:1px solid black;
+}

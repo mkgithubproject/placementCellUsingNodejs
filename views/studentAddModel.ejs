@@ -1,0 +1,54 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/students/add" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-1">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="Enter email" name="userName" >
+                    </div>
+                    <div class="mb-1">
+                        <label for="exampleFormControlInput2" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput2" name="name" placeholder="Enter Name" "">
+                    </div>
+                    <div class="mb-1">
+                        <label for="exampleFormControlInput3" class="form-label">College</label>
+                        <input  type="text" class="form-control" id="exampleFormControlInput3"
+                            placeholder="Enter College" name="college" "">
+                    </div>
+                    <div class="mb-1">
+                        <label for="exampleFormControlInput4" class="form-label">Batch</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput4" name="batch" placeholder="Enter Batch" "">
+                    </div>
+                    <div class="mb-1">
+                        <label for="exampleFormControlInput5" class="form-label">DSA Score</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput5"
+                            placeholder="Enter Final DSA score" name="dsa_score" >
+                    </div>
+                    <div class="mb-1">
+                        <label for="exampleFormControlInput6" class="form-label">WebD Score</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput6"
+                            placeholder="Enter Final WebD score" name="web_score" >
+                    </div>
+                    <div class="mb-1">
+                        <label for="exampleFormControlInput7" class="form-label">React Score</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput7"
+                            placeholder="Enter Final React score" name="react_score" >
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

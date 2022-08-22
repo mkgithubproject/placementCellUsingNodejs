@@ -1,0 +1,10 @@
+const express=require('express');
+const passport=require('passport');
+const router=express.Router();
+const interviewController=require('../controllers/interview_controller');
+router.get('/interviews_list',passport.checkAuthentication,interviewController.listOfInterviews);
+router.post('/add',passport.checkAuthentication,interviewController.add);
+router.post('/allocate',passport.checkAuthentication,interviewController.allocate);
+router.post('/getAllocatedStudents',passport.checkAuthentication,interviewController.getAllocatedStudents);
+router.post('/assignResultToDB',passport.checkAuthentication,interviewController.assignResultToDB);
+module.exports=router;

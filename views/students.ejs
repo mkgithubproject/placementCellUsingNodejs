@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/student.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css"
+        integrity="sha512-NXUhxhkDgZYOMjaIgd89zF2w51Mub53Ru3zCNp5LTlEzMbNNAjTjDbpURYGS5Mop2cU4b7re1nOIucsVlrx9fA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS only -->
+    <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <title>
+        <%=locals.title %>
+
+    </title>
+</head>
+
+<body>
+    <div class="mainWrapper">
+        <%- include('header'); -%>
+            <%- include('studentAddModel'); -%>
+    </div>
+    <ol class="list-group list-group">
+        <% for(let student of locals.studentList){ %>
+            <li  class=" studentList list-group-item d-flex justify-content-between align-items-start ">
+                
+                <div>
+                    <div class="fw-bold" style="font-style:italic;">
+                        <%= student.student_details.userName %>
+                    </div>
+                    <div>
+                        <h6 class="text-center mt-3">--Student Details--</h6>
+                        <span><b>Name:</b>
+                            <%= student.student_details.name %>
+                        </span>
+                        <span><b>College: </b>
+                            <%= student.student_details.college %>
+                        </span>
+                        <span><b>Status: </b>
+                            <%= student.student_details.status%>
+                        </span>
+
+                        <span><b>Batch: </b>
+                            <%= student.batch%>
+                        </span>
+
+
+                        <h6 class="text-center mt-3">--Course Score--</h6>
+                        <span><b>DSA:</b>
+                            <%= student.course_scores.dsa %>
+                        </span>
+                        <span><b>WEB DEV: </b>
+                            <%= student.course_scores.webD %>
+                        </span>
+                        <span><b>REACT: </b>
+                            <%= student.course_scores.react %>
+                        </span>
+                        <h6 class="text-center mt-3">--Interviews--</h6>
+                        <ul style="list-style-type: none;" class="p-0">
+                            <% let listOfInterviews=student.interviews;
+                            let i=0;
+                             for(interview of listOfInterviews){ %>
+                                <li><span><b>Company Name:</b>
+                                        <%= interview.company_name %>
+                                    </span>
+                                    <span><b>Timing: </b>
+                                        <%= interview.date_time %>
+                                    </span>
+                                    <span><b>Result: </b> <%=student.result[i++] %></span>
+                                </li>
+                                <%}%>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <% } %>
+    </ol>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
+        integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <% if(flash.success && flash.success.length>0){ %>
+        <script>
+            new Noty({
+                theme: 'relax',
+                text: "<%= flash.success %>",
+                type: 'success',
+                layout: 'topRight',
+                timeout: 1500
+            }).show();
+        </script>
+        <%} %>
+            <% if(flash.error && flash.error.length>0){ %>
+                <script>
+                    new Noty({
+                        theme: 'relax',
+                        text: "<%= flash.error %>",
+                        type: 'error',
+                        layout: 'topRight',
+                        timeout: 1500
+                    }).show();
+                </script>
+                <%} %>
+</body>
+
+</html>

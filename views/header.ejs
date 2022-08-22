@@ -8,11 +8,34 @@
         <li>
             <a href="/users/profile">Profile</a>
         </li>
+        <li>
+            <a href="/students/download">Download</a>
+        </li>
+        <% if(locals.studentList){%>
+        <li>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add New Student
+              </button>
+        </li>
+        <%}%>
+        <% if(locals.interviewList){%>
+            <li>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add Interview
+                  </button>
+            </li>
+            <%}%>
         <li class="rightFloat">
             <a href="/users/sign-out">Log Out</a>
         </li>
         <li class="rightFloat">
             <a href="/users/reset-password">Reset Password</a>
+        </li>
+        <li class="rightFloat">
+            <a href="/students/students_list">Students</a>
+        </li>
+        <li class="rightFloat">
+            <a href="/interviews/interviews_list">Interviews</a>
         </li>
         <%}else{%>
         <li class="rightFloat">

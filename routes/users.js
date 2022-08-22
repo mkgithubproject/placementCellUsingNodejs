@@ -6,8 +6,8 @@ router.get('/sign-up',usersController.userSingUp);
 router.get('/sign-in',usersController.userSingIn);
 router.get('/profile',passport.checkAuthentication,usersController.userProfile);
 router.post('/create',usersController.create);
-router.post('/update-password',usersController.updatePassword);
-router.get('/reset-password',usersController.resetPassword);
+router.post('/update-password',passport.checkAuthentication,usersController.updatePassword);
+router.get('/reset-password',passport.checkAuthentication,usersController.resetPassword);
 router.get('/reset-password-notAuth',usersController.resetPasswordNotAuth);
 router.post('/send-mail-forResetting-password',usersController.sendMailForResettingPassword);
 // use passport as a middleware to authenticate

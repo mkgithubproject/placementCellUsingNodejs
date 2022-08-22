@@ -1,0 +1,6 @@
+.studentList{
+    cursor: pointer;
+}
+.studentList:hover{
+    background-color:aqua !important; ;
+} 

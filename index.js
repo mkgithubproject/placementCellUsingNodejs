@@ -10,13 +10,13 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const passportGoogle = require('./config/passport-google-oauth2-strategy');
-
+app.use(express.json());// for js fetch api json data
 const flash=require('connect-flash')
 const customSetFlashMWare=require('./config/flashMiddlleWare');
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 app.use(express.urlencoded({ extended: false }));
-app.use(session({
+const MongoStore = require('connect-mongo');app.use(session({
     name: 'mkAuth',
     // TODO change the secret before deployment in production mode
     secret:process.env.session_cookie_key,
@@ -24,7 +24,10 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
-    }}));
+    },
+    store: MongoStore.create({ mongoUrl: process.env.DB_URI || `mongodb://localhost/${process.env.db}` })
+    
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
@@ -37,7 +40,7 @@ app.listen(process.env.PORT || port,(err)=>{
         console.log(`Error in running the server: ${err}`);
         return;
     }
-    console.log(`Server is running on port ${process.env.port}`);
+    console.log("Server is running...");
 });
 // use express router
 
