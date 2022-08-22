@@ -29,63 +29,64 @@
     <div class="mainWrapper">
         <%- include('header'); -%>
             <%- include('studentAddModel'); -%>
+
+                <ol class="list-group list-group">
+                    <% for(let student of locals.studentList){ %>
+                        <li class=" studentList list-group-item d-flex justify-content-between align-items-start ">
+
+                            <div>
+                                <div class="fw-bold" style="font-style:italic;">
+                                    <%= student.student_details.userName %>
+                                </div>
+                                <div>
+                                    <h6 class="text-center mt-3">--Student Details--</h6>
+                                    <span><b>Name:</b>
+                                        <%= student.student_details.name %>
+                                    </span>
+                                    <span><b>College: </b>
+                                        <%= student.student_details.college %>
+                                    </span>
+                                    <span><b>Status: </b>
+                                        <%= student.student_details.status%>
+                                    </span>
+
+                                    <span><b>Batch: </b>
+                                        <%= student.batch%>
+                                    </span>
+
+
+                                    <h6 class="text-center mt-3">--Course Score--</h6>
+                                    <span><b>DSA:</b>
+                                        <%= student.course_scores.dsa %>
+                                    </span>
+                                    <span><b>WEB DEV: </b>
+                                        <%= student.course_scores.webD %>
+                                    </span>
+                                    <span><b>REACT: </b>
+                                        <%= student.course_scores.react %>
+                                    </span>
+                                    <h6 class="text-center mt-3">--Interviews--</h6>
+                                    <ul style="list-style-type: none;" class="p-0">
+                                        <% let listOfInterviews=student.interviews; let i=0; for(interview of
+                                            listOfInterviews){ %>
+                                            <li><span><b>Company Name:</b>
+                                                    <%= interview.company_name %>
+                                                </span>
+                                                <span><b>Timing: </b>
+                                                    <%= interview.date_time %>
+                                                </span>
+                                                <span><b>Result: </b>
+                                                    <%=student.result[i++] %>
+                                                </span>
+                                            </li>
+                                            <%}%>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <% } %>
+                </ol>
     </div>
-    <ol class="list-group list-group">
-        <% for(let student of locals.studentList){ %>
-            <li  class=" studentList list-group-item d-flex justify-content-between align-items-start ">
-                
-                <div>
-                    <div class="fw-bold" style="font-style:italic;">
-                        <%= student.student_details.userName %>
-                    </div>
-                    <div>
-                        <h6 class="text-center mt-3">--Student Details--</h6>
-                        <span><b>Name:</b>
-                            <%= student.student_details.name %>
-                        </span>
-                        <span><b>College: </b>
-                            <%= student.student_details.college %>
-                        </span>
-                        <span><b>Status: </b>
-                            <%= student.student_details.status%>
-                        </span>
-
-                        <span><b>Batch: </b>
-                            <%= student.batch%>
-                        </span>
-
-
-                        <h6 class="text-center mt-3">--Course Score--</h6>
-                        <span><b>DSA:</b>
-                            <%= student.course_scores.dsa %>
-                        </span>
-                        <span><b>WEB DEV: </b>
-                            <%= student.course_scores.webD %>
-                        </span>
-                        <span><b>REACT: </b>
-                            <%= student.course_scores.react %>
-                        </span>
-                        <h6 class="text-center mt-3">--Interviews--</h6>
-                        <ul style="list-style-type: none;" class="p-0">
-                            <% let listOfInterviews=student.interviews;
-                            let i=0;
-                             for(interview of listOfInterviews){ %>
-                                <li><span><b>Company Name:</b>
-                                        <%= interview.company_name %>
-                                    </span>
-                                    <span><b>Timing: </b>
-                                        <%= interview.date_time %>
-                                    </span>
-                                    <span><b>Result: </b> <%=student.result[i++] %></span>
-                                </li>
-                                <%}%>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <% } %>
-    </ol>
-
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
         integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
