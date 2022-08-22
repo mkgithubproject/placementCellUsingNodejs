@@ -2,7 +2,7 @@
 
 ## Features
 -Add students (Company  employees can add students)
--Employess registration
+-Employees registration
 -Add interviews
 -Allocate an interviews to a student
 -Allocate result to a student of a particular interview.
